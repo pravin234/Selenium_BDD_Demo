@@ -1,6 +1,4 @@
-Here’s a comprehensive overview and folder structure for a modern Cucumber BDD Selenium automation framework, following your requirements. This can be used in your README.md and as project guidance.
 
----
 
 # BDD Selenium Framework
 
