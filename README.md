@@ -1,5 +1,34 @@
 
 
+## ⚡ Short Info about Selenium BDD Approaches
+
+Selenium BDD (Behavior Driven Development) combines the power of Selenium WebDriver for browser automation with BDD tools like Cucumber. This approach lets you write human-readable scenarios in Gherkin language, bridging the gap between technical and non-technical stakeholders.
+
+---
+
+## 🎯 Benefits of BDD with Selenium
+
+- **Collaboration:** Encourages better communication between developers, testers, and business analysts.
+- **Clarity:** Gherkin syntax makes test scenarios easy to understand for everyone.
+- **Reusability:** Step definitions can be reused across multiple scenarios.
+- **Traceability:** Features and scenarios map directly to requirements.
+- **Automation:** Fast feedback through automated acceptance tests.
+
+
+## 📦 Required Dependency List
+
+| Dependency       | Group ID                    | Artifact ID        | Version   | Scope  | Purpose           |
+|------------------|----------------------------|--------------------|-----------|--------|-------------------|
+| Selenium         | org.seleniumhq.selenium     | selenium-java      | 4.20.0    |       | Browser automation|
+| Cucumber Java    | io.cucumber                | cucumber-java      | 7.14.0    |       | BDD support       |
+| Cucumber JUnit   | io.cucumber                | cucumber-junit     | 7.14.0    | test  | Test runner       |
+| Log4j2           | org.apache.logging.log4j    | log4j-core         | 2.23.1    |       | Logging           |
+| Allure/Extent    | (choose one)               | (see docs)         | (latest)  |       | Reporting         |
+| JUnit            | junit                       | junit              | 4.13.2    | test  | Unit testing      |
+| Maven Surefire   | org.apache.maven.plugins    | maven-surefire-plugin | 3.0.0   | plugin | Test execution   |
+
+
+Add these sections to your README for a more informative and structured overview! Need a ready-to-paste markdown block for your README?
 # BDD Selenium Framework
 
 A modern **Cucumber-based BDD Selenium Automation Framework** using Java, Maven, and best practices for scalable UI test automation.
