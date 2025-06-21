@@ -1,83 +1,171 @@
-"# Selenium_BDD_Demo" 
+Here’s a comprehensive overview and folder structure for a modern Cucumber BDD Selenium automation framework, following your requirements. This can be used in your README.md and as project guidance.
 
-selenium-cucumber-java
-=================
+---
 
-selenium-cucumber : Automation Testing Using Java
+# BDD Selenium Framework
 
-selenium-cucumber is a behavior driven development (BDD) approach to write automation test script to test Web.
-It enables you to write and execute automated acceptance/unit tests.
-It is cross-platform, open source and free.
-Automate your test cases with minimal coding.
-[More Details](http://seleniumcucumber.info/)
+A modern **Cucumber-based BDD Selenium Automation Framework** using Java, Maven, and best practices for scalable UI test automation.
 
-Documentation
--------------
-* [Installation](doc/installation.md)
-* [Predefined steps](doc/canned_steps.md)
+---
 
-Download a Framework
---------------
+## 📁 Folder Structure
 
-
-Writing a test
---------------
-
-The cucumber features goes in the `features` library and should have the ".feature" extension.
-
-You can start out by looking at `features/my_first.feature`. You can extend this feature or make your own features using some of the [predefined steps](doc/canned_steps.md) that comes with selenium-cucumber.
-
-
-Predefined steps
------------------
-By using predefined steps you can automate your test cases more quickly, more efficiently and without much coding.
-
-The predefined steps are located [here](doc/canned_steps.md)
-
-Running test
---------------
-
-Go to your project directory from terminal and hit following commands
-* `mvn test (defualt will run on local firefox browser)`
-* `mvn test "-Dbrowser=chrome" (to use any other browser)`
-* `mvn test "-Dcloud_config=saucelab_windows_chrome52" (to run test on cloud test platforms)`
-
-Using canned tests in your project
-----------------------------------
-
-In your TestRunner class add a glue option:
-
-```
-package stepDefintions;
-
-import org.junit.runner.RunWith;
-
-import cucumber.api.CucumberOptions;
-import cucumber.api.junit.Cucumber;
-
-@RunWith(Cucumber.class)
-@CucumberOptions(
-	plugin = {"html:target/cucumberHtmlReport"},
-	features = "classpath:features",
-	glue = {"info.seleniumcucumber.stepdefinitions"}
-)
-
-public class RunCukeTest {
-}
+```plaintext
+bdd-selenium-framework/
+├── .github/
+│   └── workflows/
+│       └── ci.yml                # GitHub Actions CI Pipeline
+├── downloads/                    # File download storage
+├── logs/                         # Log4j log files
+├── reports/                      # Allure or ExtentReports
+├── screenshots/                  # Failure screenshots
+├── src/
+│   ├── main/
+│   │   └── java/
+│   │       ├── base/
+│   │       │   └── BaseTest.java
+│   │       ├── config/
+│   │       │   ├── ConfigReader.java
+│   │       │   └── ConfigModel.java
+│   │       ├── drivers/
+│   │       │   └── DriverFactory.java
+│   │       ├── pages/
+│   │       │   └── LoginPage.java
+│   │       └── utils/
+│   │           ├── LoggerHelper.java
+│   │           ├── FileUtil.java
+│   │           ├── ExcelUtil.java
+│   │           └── PDFUtil.java
+│   └── test/
+│       ├── java/
+│       │   ├── hooks/
+│       │   │   └── Hooks.java
+│       │   ├── runners/
+│       │   │   └── TestRunner.java
+│       │   ├── stepDefinitions/
+│       │   │   └── LoginSteps.java
+│       │   └── assertions/
+│       │       └── SoftAssertions.java
+│       └── resources/
+│           ├── config/
+│           │   ├── config.yaml
+│           │   └── log4j2.xml
+│           ├── features/
+│           │   └── login.feature
+│           └── testdata/
+│               ├── loginData.xlsx
+│               └── sample.xml
+├── pom.xml                      # Maven config
+├── testng.xml                   # Optional
+└── README.md                    # Setup + Usage Docs
 ```
 
-Maven/Gradle Dependency
------------------------
+---
 
-See https://jitpack.io/#selenium-cucumber/selenium-cucumber-java .
+## 🚀 Key Features
 
-License
--------
+- **Cucumber BDD**: Write readable Gherkin syntax for features and scenarios.
+- **Selenium WebDriver**: Automate browser interactions.
+- **Maven Managed**: Easy build and dependency management.
+- **Extensible Page Object Model**: Clean separation of page logic.
+- **Hooks & Runners**: Customizable test lifecycle.
+- **Allure/Extent Reporting**: Visual, actionable test reports.
+- **Log4j Logging**: Centralized and configurable logging.
+- **Reusable Utilities**: File, Excel, PDF, and logging helpers.
+- **Cloud Ready**: Integrate with SauceLabs, BrowserStack, etc.
+- **CI/CD**: Ready for GitHub Actions or other CI tools.
 
-(The MIT License)
+---
 
-Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the 'Software'), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+## 🛠️ Required Dependencies
 
-The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+Add to your `pom.xml` (sample for core):
 
-THE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+```xml
+<dependencies>
+    <!-- Cucumber Java -->
+    <dependency>
+        <groupId>io.cucumber</groupId>
+        <artifactId>cucumber-java</artifactId>
+        <version>7.14.0</version>
+    </dependency>
+    <!-- Cucumber JUnit -->
+    <dependency>
+        <groupId>io.cucumber</groupId>
+        <artifactId>cucumber-junit</artifactId>
+        <version>7.14.0</version>
+        <scope>test</scope>
+    </dependency>
+    <!-- Selenium Java -->
+    <dependency>
+        <groupId>org.seleniumhq.selenium</groupId>
+        <artifactId>selenium-java</artifactId>
+        <version>4.20.0</version>
+    </dependency>
+    <!-- Log4j2 -->
+    <dependency>
+        <groupId>org.apache.logging.log4j</groupId>
+        <artifactId>log4j-core</artifactId>
+        <version>2.23.1</version>
+    </dependency>
+    <!-- Allure or ExtentReports -->
+    <!-- Add one as needed -->
+    <!-- ... other dependencies ... -->
+</dependencies>
+```
+
+> 💡 Adjust versions as per latest releases.
+
+---
+
+## 📝 Example Feature File
+
+**src/test/resources/features/login.feature**
+```gherkin
+Feature: Login functionality
+
+  Scenario: Successful login with valid credentials
+    Given I am on the login page
+    When I enter username "user1" and password "pass1"
+    Then I should see the dashboard
+```
+
+---
+
+## 🏃‍♂️ Running Tests
+
+From project root:
+
+- Run all tests (default browser):  
+  ```
+  mvn test
+  ```
+
+- Run on a specific browser:  
+  ```
+  mvn test -Dbrowser=chrome
+  ```
+
+- Generate Allure Report:  
+  ```
+  mvn allure:serve
+  ```
+
+---
+
+## 🏗️ Adding New Features
+
+1. Add `.feature` files in `src/test/resources/features/`
+2. Implement Step Definitions in `src/test/java/stepDefinitions/`
+3. Add Page Objects in `src/main/java/pages/`
+4. Customize runners in `src/test/java/runners/`
+
+---
+
+## 📄 License
+
+MIT License. See [LICENSE](LICENSE) for details.
+
+---
+
+**Start automating your web apps with robust, maintainable, and scalable BDD tests!**
